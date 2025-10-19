@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
  * The <video> element is set to loop, autoplay (muted), and playsInline.
  */
 
-const VIDEO_PATH = "./videos/flow_video.mp4";
+const VIDEO_PATH = "https://raw.githubusercontent.com/acqu1red/arcdesign/main/frontend/public/videos/flow_video.mp4";
 
 export default function ArcplanHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
