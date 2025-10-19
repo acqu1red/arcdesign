@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
  * The <video> element is set to loop, autoplay (muted), and playsInline.
  */
 
-const VIDEO_PATH = "/videos/flow.mp4";
+const VIDEO_PATH = "./videos/flow.mp4";
 
 export default function ArcplanHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -73,7 +73,7 @@ export default function ArcplanHero() {
         >
           {/* Fallback for browsers that don't support video */}
           <img 
-            src="/videos/poster.jpg" 
+            src="./videos/poster.jpg" 
             alt="Background" 
             className="h-full w-full object-cover"
           />
