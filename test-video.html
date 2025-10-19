@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест видео</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест загрузки видео</h1>
+    
+    <div class="status">
+        <p>Статус: <span id="status">Загрузка...</span></p>
+        <p>URL: <span id="url"></span></p>
+        <p>Размер: <span id="size"></span></p>
+    </div>
+    
+    <video 
+        id="testVideo"
+        controls 
+        autoplay 
+        muted 
+        loop
+        playsinline
+        onloadstart="updateStatus('Начало загрузки')"
+        oncanplay="updateStatus('Можно воспроизводить')"
+        onerror="updateStatus('Ошибка загрузки')"
+        onplay="updateStatus('Воспроизведение началось')"
+    >
+        <source src="https://raw.githubusercontent.com/acqu1red/arcdesign/main/frontend/public/videos/flow_video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+
+    <script>
+        const video = document.getElementById('testVideo');
+        const statusEl = document.getElementById('status');
+        const urlEl = document.getElementById('url');
+        const sizeEl = document.getElementById('size');
+        
+        urlEl.textContent = video.src;
+        
+        function updateStatus(message) {
+            statusEl.textContent = message;
+            console.log('Video status:', message);
+        }
+        
+        video.addEventListener('loadedmetadata', () => {
+            sizeEl.textContent = `${video.videoWidth}x${video.videoHeight}`;
+        });
+        
+        video.addEventListener('error', (e) => {
+            console.error('Video error:', e);
+            updateStatus('Ошибка: ' + e.message);
+        });
+    </script>
+</body>
+</html>
