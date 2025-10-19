@@ -41,7 +41,4 @@ coverage/
 tmp/
 temp/
 
-# Large video files (use external hosting)
-frontend/public/videos/*.mp4
-frontend/public/videos/*.mov
-frontend/public/videos/*.avi
+# Large video files are now handled by Git LFS
